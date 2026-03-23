@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 프롬프트 메이커 | Prompt Enhancer</title>
+    <meta name="description" content="AI와의 대화를 더 풍성하게 만들어주는 프롬프트 향상 도구입니다.">
+    <meta property="og:title" content="AI 프롬프트 메이커">
+    <meta property="og:description" content="초보자도 전문가처럼 프롬프트를 작성할 수 있게 도와드립니다.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Pane: AI Chat -->
+        <div class="pane chat-pane">
+            <header class="pane-header">
+                <h2>AI 대화창</h2>
+                <div class="header-status">Live Simulation</div>
+            </header>
+            <div class="chat-history" id="chatHistory">
+                <!-- Chat messages will appear here -->
+                <div class="message ai-message">
+                    <div class="message-content">안녕하세요! 무엇을 도와드릴까요? 오른쪽 프롬프트 향상기에서 제작한 내용을 여기에 붙여넣으실 수 있습니다.</div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <textarea id="chatInput" placeholder="이곳에 메시지를 입력하세요..."></textarea>
+                <button id="sendChatBtn" class="primary-btn">전송</button>
+            </div>
+        </div>
+
+        <!-- Right Pane: Prompt Editor -->
+        <div class="pane prompt-pane">
+            <header class="pane-header">
+                <h2>프롬프트 향상기</h2>
+                <button id="clearBtn" class="text-btn">초기화</button>
+            </header>
+
+            <div class="prompt-options">
+                <div class="option-group">
+                    <label>전문가 페르소나</label>
+                    <select id="personaSelect">
+                        <option value="default">일반 전문가</option>
+                        <option value="developer">소프트웨어 엔지니어</option>
+                        <option value="strategist">전략 기획자</option>
+                        <option value="educator">교육 전문가</option>
+                    </select>
+                </div>
+                <div class="option-group horizontal">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="checkCot" checked>
+                        <span class="checkmark"></span>
+                        단계별 사고 (CoT)
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="checkExamples">
+                        <span class="checkmark"></span>
+                        구체적 예시 포함
+                    </label>
+                </div>
+            </div>
+
+            <div class="prompt-workspace">
+                <div class="input-section">
+                    <label for="promptInput">초안 프롬프트 작성</label>
+                    <textarea id="promptInput" placeholder="내용을 입력하세요. (예: '맛있는 파스타 레시피 알려줘')"></textarea>
+                </div>
+                
+                <div class="action-section">
+                    <button id="suggestBtn" class="accent-btn">
+                        <span class="magic-icon">✨</span> 제안
+                    </button>
+                </div>
+
+                <div class="output-section">
+                    <label for="promptOutput">AI 추천 수정 프롬프트</label>
+                    <div class="output-wrapper">
+                        <textarea id="promptOutput" placeholder="제안 버튼을 누르면 인공지능이 더 좋은 프롬프트를 추천해 드립니다." readonly></textarea>
+                        <button id="copyBtn" class="icon-btn" title="복사하기" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="PromptEngine.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
